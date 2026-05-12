@@ -98,7 +98,18 @@ const menu = document.getElementById("menu");
 const startBtn = document.getElementById("startBtn");
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x000010, 0.02);
+
+const textureLoader = new THREE.TextureLoader();
+
+textureLoader.load(
+  "assets/crimson-wisp.png",
+  texture => {
+    texture.colorSpace = THREE.SRGBColorSpace;
+    scene.background = texture;
+  }
+);
+
+scene.fog = new THREE.FogExp2(0x000010, 0.012);
 
 const camera = new THREE.PerspectiveCamera(
   70,
@@ -145,7 +156,9 @@ starGeo.setAttribute(
 const stars = new THREE.Points(
   starGeo,
   new THREE.PointsMaterial({
-    size: 0.7
+    size: 0.45,
+    transparent: true,
+    opacity: 0.55
   })
 );
 
@@ -214,7 +227,7 @@ function createNumberSprite(n) {
   );
 
   gradient.addColorStop(0, "rgba(255,255,255,1)");
-  gradient.addColorStop(0.4, "rgba(100,220,255,0.8)");
+  gradient.addColorStop(0.4, "rgba(120,240,255,0.95)");
   gradient.addColorStop(1, "rgba(0,0,0,0)");
 
   ctx.fillStyle = gradient;
@@ -227,8 +240,12 @@ function createNumberSprite(n) {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  ctx.fillStyle = "black";
-  ctx.fillText(String(n), size/2, size/2);
+  ctx.lineWidth = 10;
+ctx.strokeStyle = "rgba(0,0,0,0.9)";
+ctx.strokeText(String(n), size/2, size/2);
+
+ctx.fillStyle = "white";
+ctx.fillText(String(n), size/2, size/2);
 
   const texture = new THREE.CanvasTexture(canvas);
 
