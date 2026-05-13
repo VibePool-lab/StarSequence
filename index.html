@@ -276,11 +276,7 @@ function createNumberSprite(n) {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  ctx.lineWidth = 10;
-  ctx.strokeStyle = "rgba(20,20,60,0.9)";
-  ctx.strokeText(String(n), size/2, size/2);
-
-  ctx.fillStyle = "rgba(20,20,80,1)";
+  ctx.fillStyle = "rgba(30,30,100,1)";
   ctx.fillText(String(n), size/2, size/2);
 
   const texture = new THREE.CanvasTexture(canvas);
