@@ -102,7 +102,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 textureLoader.load(
-  "/Space-view.png",
+  "Space-view.png",
   texture => {
     texture.colorSpace = THREE.SRGBColorSpace;
     scene.background = texture;
@@ -227,8 +227,8 @@ function createNumberSprite(n) {
   );
 
   gradient.addColorStop(0, "rgba(255,255,255,1)");
-  gradient.addColorStop(0.4, "rgba(45,45,100,0.85)");
-  gradient.addColorStop(1, "rgba(45,45,85,1)");
+  gradient.addColorStop(0.4, "rgba(120,240,255,0.95)");
+  gradient.addColorStop(1, "rgba(0,0,0,0)");
 
   ctx.fillStyle = gradient;
 
@@ -241,7 +241,7 @@ function createNumberSprite(n) {
   ctx.textBaseline = "middle";
 
   ctx.lineWidth = 10;
-ctx.strokeStyle = "rgba(45,45,100,0.75)";
+ctx.strokeStyle = "rgba(0,0,0,0.9)";
 ctx.strokeText(String(n), size/2, size/2);
 
 ctx.fillStyle = "white";
